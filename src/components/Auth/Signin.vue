@@ -1,5 +1,5 @@
 <template>
-<div class="">
+<div>
   <h3 class="text-center">Login</h3>
 
   <input type="text" class="form-control m-b-15" placeholder="Email" v-model="user.email">
@@ -17,7 +17,6 @@
     The ability to change your password will be added in a future update.
   </p>
 
-  <!-- Login should return status of 422? so that failed api requests can return 401 for unauthorized-->
 </div>
 </template>
 
@@ -38,16 +37,15 @@ export default{
   },
   methods: {
     login: function(){
-      console.log(this.user);
-      this.$http.post('auth', this.user)
-          .then(function(response){
-            alertify.success("Successful Login");
-            this.$auth.setToken(response.body.token, Date.now() + 43200000); // + 12 hours
-            this.$router.push('/newsfeed');
-          })
-          .catch(function(error){
-
-          })
+      console.log(this.user.email);
+      console.log(this.user.password);
+      // this.$http.post('auth', this.user)
+      //     .then(function(response){
+      //       alertify.success("Successful Login");
+      //       this.$auth.setToken(response.body.token, Date.now() + 43200000); // + 12 hours
+      //       this.$router.push('/newsfeed');
+      //     })
+      //     .catch(function(error){console.log(error)})
     }
   }
 }
